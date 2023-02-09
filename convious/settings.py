@@ -28,19 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['convious.spookykiwi.com', '192.248.175.157']
 CSRF_TRUSTED_ORIGINS = ["https://convious.spookykiwi.com"]
 
-#TODO:
-# X allowed hosts
-# X allowed csrf stuff
-# X whitenoise
-# X prod and dev Dockerfile
-# X compose.yml
-# X NGINX conf
-# - Certbot
-# X domain conf
-# X github actions pipeline
-
-
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -55,7 +42,7 @@ INSTALLED_APPS = [
 
     # 3rd Party
     'rest_framework',
-    # 'corsheaders',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
