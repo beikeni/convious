@@ -31,7 +31,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for index in range(1, 11):
             Restaurant.objects.update_or_create(
-                id=index,
+                name=f"Restaurant {index}",
                 defaults={
                     "name": f"Restaurant {index}"
                 }
