@@ -61,4 +61,4 @@ Notes
 - The build stage is performed with **Docker** and the application is served with **Nginx**.
 - The datatabase is a **PostgreSQL** instance running in a Docker container.
 - The content comes pre-loaded with 10 users, 10 restaurants and 5 votes for each user for every day from the 1st Jan 2023 up to the 8th Feb.
-
+- Django Admin: convious.spookykiwi.com/admin // user: admin // pass: c0nvious
