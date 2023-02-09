@@ -31,12 +31,12 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for index in range(1, 11):
             Restaurant.objects.update_or_create(
+                id=index,
                 defaults={
                     "name": f"Restaurant {index}"
                 }
             )
             get_user_model().objects.update_or_create(
-                id=index,
                 defaults={
                     "username": f"username{index}"
                 }
