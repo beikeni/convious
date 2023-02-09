@@ -33,23 +33,15 @@ Brief
 
    - Everyone can add/remove/update restaurants
 
-   - Every user gets X (hardcoded, but "configurable") votes per
-   day. Each vote has a "weight". First user vote on the same
-   restaurant counts as 1, second as 0.5, 3rd and all subsequent
-   votes as 0.25.
+   - Every user gets X (hardcoded, but "configurable") votes per day. Each vote has a "weight". First user vote on the same restaurant counts as 1, second as 0.5, 3rd and all subsequent votes as 0.25.
 
-   - If a voting result is the same on multiple restaurants, the
-   winner is the one who got more distinct users to vote on it.
+   - If a voting result is the same on multiple restaurants, the winner is the one who got more distinct users to vote on it.
 
-   - Every day vote amounts are reset. Unused previous day votes are
-   lost.
+   - Every day vote amounts are reset. Unused previous day votes are lost.
 
-   - Show the history of selected restaurants per time period. For
-   example, the front-end should be able to query which restaurant
-   won the vote on a specific day.
+   - Show the history of selected restaurants per time period. For example, the front-end should be able to query which restaurant won the vote on a specific day.
 
-   - Do not forget that frontend dev will need a way to show which
-   restaurants users can vote on and which restaurant is a winner
+   - Do not forget that frontend dev will need a way to show which restaurants users can vote on and which restaurant is a winner
 
    - Readme on how to use the API, launch the project, etc.
 
