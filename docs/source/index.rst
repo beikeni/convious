@@ -30,7 +30,6 @@ on top of it. Approach this task as you would approach a real
 assignment when you are at work.
 
 Basic business rules/requirements:
-
 1. Everyone can add/remove/update restaurants
 
 2. Every user gets X (hardcoded, but "configurable") votes per
@@ -40,6 +39,7 @@ votes as 0.25.
 
 2.1. If a voting result is the same on multiple restaurants, the
 winner is the one who got more distinct users to vote on it.
+
 3. Every day vote amounts are reset. Unused previous day votes are
 lost.
 
@@ -52,11 +52,12 @@ restaurants users can vote on and which restaurant is a winner
 
 6. Readme on how to use the API, launch the project, etc.
 
-Technologies:
+**Technologies:**
+
 Select what best suits you. Since we use Python with Django, it is
 preferred. However, feel free to choose other languages/frameworks.
 
-Bonus points (not mandatory):
+**Bonus points (not mandatory):**
 - Wrapping the app in Docker
 - Deploying the API somewhere (for example, Heroku)
 
