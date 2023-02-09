@@ -64,4 +64,3 @@ Notes
 - The datatabase is a **PostgreSQL** instance running in a Docker container.
 - The content comes pre-loaded with 10 users, 10 restaurants and 5 votes for each user for every day from the 1st Jan 2023 up to the 8th Feb.
 
- server due to the fact that the application is running on a ``t2.micro`` EC2 instance. On my laptop the response time is consistently in the 0.3 ~ 0.4 seconds range.

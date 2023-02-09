@@ -25,7 +25,7 @@ class VoteAPIView(APIView):
         except DailyVoteCountExceededError:
             return Response({'Error': 'Daily vote count exceeded for this user'}, status=status.HTTP_403_FORBIDDEN)
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response({'Success': 'Vote successfully registered'}, status=status.HTTP_201_CREATED)
 
 
 class ResultAPIView(APIView):
@@ -42,4 +42,5 @@ class ResultAPIView(APIView):
 
         response = ResultResponseSerializer([{'date': vote.date, 'winner': vote.get_winner()} for vote in
                                              Vote.objects.filter(date__gte=start_date, date__lte=end_date)], many=True)
+        print(response)
         return Response(response.data, status=status.HTTP_200_OK)

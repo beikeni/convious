@@ -2,7 +2,7 @@
 API
 ===
 
-Provider CRUD
+Restaurant CRUD
 -------------
 
 List
@@ -10,7 +10,7 @@ List
 
 .. code-block::
 
-	GET /api/v1/providers/
+	GET /api/v1/restaurants/
 
 Response
 
@@ -19,11 +19,7 @@ Response
 	[
 		{
 			"id" : 12,
-			"currency": "eur",
-			"email": "email@email.com",
-			"language": "english",
-			"name": "provider_1",
-			"phone": "123456"
+			"name": "restaurant name",
 		},
 	]
 
@@ -34,41 +30,9 @@ Create
 
 .. code-block::
 
-	POST /api/v1/providers/
+	POST /api/v1/restaurants/
 
 :name: String
-:email: String
-:language: Language
-:currency: Currency
-:phone: String
-
-Response
-
-.. code-block::
-
-	{
-		"id" : 12,
-		"currency": "usd",
-		"email": "asdd@asddd.ddd",
-		"language": "english",
-		"name": "prov1",
-		"phone": "123123"
-	}
-
------------------------------------
-
-Update
-""""""
-
-.. code-block::
-
-	PUT /api/v1/providers/<int:pk>/
-
-:name: String
-:email: String
-:language: Language
-:currency: Currency
-:phone: String
 
 Response
 
@@ -76,79 +40,7 @@ Response
 
 	{
 		"id": 3,
-		"currency": "usd",
-		"email": "asdd@asddd.ddd",
-		"language": "english",
-		"name": "prov1",
-		"phone": "123123"
-	}
-
-
------------------------------------
-
-Delete
-""""""
-
-.. code-block::
-
-	DELETE /api/v1/providers/<int:pk>/
-
-Response 204
-
------------------------------------
-
-Service Area CRUD
--------------
-
-List
-""""
-
-.. code-block::
-
-	GET /api/v1/serviceareas/
-
-
-Response
-
-.. code-block::
-
-	[
-		{
-			"id": 25,
-			"name": "test",
-			"price": "123",
-			"geojson": ...,
-			"provider": Provider id
-		},
-		...
-	]
-
------------------------------------
-
-Create
-""""""
-
-.. code-block::
-
-	POST /api/v1/serviceareas/
-
-:name: String
-:price: String
-:geojson: Geojson coordinates
-:provider: Provider id
-
-Response
-
-.. code-block::
-
-	{
-		"id": 29,
-		"geojson": {
-			...
-    		},
-		"name": "test",
-		"price": 999.0,
-		"provider": 1
+		"name": "restaurant name",
 	}
 
 -----------------------------------
@@ -158,26 +50,19 @@ Update
 
 .. code-block::
 
-	PUT /api/v1/serviceareas/<int:pk>
+	PUT /api/v1/restaurants/<int:pk>/
 
 :name: String
-:price: String
-:geojson: Geojson coordinates
-:provider: Provider id
 
 Response
 
 .. code-block::
 
 	{
-		"id": 88,
-		"geojson": {
-			...
-			},
-		"name": "test2",
-		"price": 999.0,
-		"provider": 1
+		"id": 3,
+		"name": "restaurant name",
 	}
+
 
 -----------------------------------
 
@@ -186,36 +71,81 @@ Delete
 
 .. code-block::
 
-	DELETE /api/v1/serviceareas/<int:pk>
+	DELETE /api/v1/restaurants/<int:pk>/
 
 Response 204
 
 -----------------------------------
 
-Get Polygons Endpoint
----------------------
+Vote Endpoint
+-------------
+
+Votes made through this endpoint are automatically assigned the current datetime. No past or future voting is allowed.
 
 .. code-block::
 
-	POST /api/v1/get-polygons
+	POST /api/v1/vote
 
-:lat: Float
-:long: Float
+:user: Int
+:restaurant: Int
 
-Response
+Response 200
+
+.. code-block::
+
+	{'Success': 'Vote successfully registered'}
+
+Response 403 - User daily vote count exceeded
+
+.. code-block::
+
+    {'Error': 'Daily vote count exceeded for this user'}
+
+
+Result Query Endpoint
+---------------------
+
+Both parameters are optional.
+If no date is indicated the date of today is assumed.
+If no period length is indicated it defaults to 0.
+To return a list of past results indicate the start date and the length of the desired period.
+
+.. code-block::
+
+	GET /api/v1/result/?date=2023-01-01&period_length=3
+
+:date: String
+:period_length: Int
 
 .. code-block::
 
 	[
 		{
-			"name": "Italy",
-			"price": 18.440960484948576,
-			"provider": {
-				"currency": "eur",
-				"email": "email@email.com",
-				"language": "english",
-				"name": "provider_1",
-				"phone": "123456"
+			"date": "2023-01-03",
+			"winner": {
+				"score": 7.75,
+				"restaurant_id": 8,
+				"distinct_users": 6,
+				"restaurant_name": "Restaurant 8"
+			}
+		},
+		{
+			"date": "2023-01-02",
+			"winner": {
+				"score": 7.25,
+				"restaurant_id": 9,
+				"distinct_users": 6,
+				"restaurant_name": "Restaurant 9"
+			}
+		},
+		{
+			"date": "2023-01-01",
+			"winner": {
+				"score": 7.0,
+				"restaurant_id": 7,
+				"distinct_users": 6,
+				"restaurant_name": "Restaurant 7"
 			}
 		}
 	]
+
