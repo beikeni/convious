@@ -73,7 +73,7 @@ jobs:
           tags: dockerbeikeni/convious:latest
 
   deploy:
-    needs: docker
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Redeploy
