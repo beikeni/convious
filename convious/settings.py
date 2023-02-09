@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-bb&3go_j%(%=x65h3=s*r^kxp%smns4*j=7l()%0y=2plx@j_q
 DEBUG = True
 
 ALLOWED_HOSTS = ['convious.spookykiwi.com', '192.248.175.157']
-
+CSRF_TRUSTED_ORIGINS = ["https://convious.spookykiwi.com"]
 
 #TODO:
 # X allowed hosts
@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ['convious.spookykiwi.com', '192.248.175.157']
 # X NGINX conf
 # - Certbot
 # X domain conf
-# - github actions pipeline
+# X github actions pipeline
 
 
 # Application definition

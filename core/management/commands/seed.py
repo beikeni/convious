@@ -9,7 +9,7 @@ from core.models import Restaurant, IndividualVote, DAILY_VOTE_LIMIT, Vote
 
 
 def populate_past_votes():
-    start_date = datetime.datetime.strptime('2023-01-27', "%Y-%m-%d").date()
+    start_date = datetime.datetime.strptime('2023-01-01', "%Y-%m-%d").date()
     days = datetime.date.today() - start_date
     for index in range(days.days):
         current_date = start_date + datetime.timedelta(days=index)
