@@ -30,6 +30,7 @@ on top of it. Approach this task as you would approach a real
 assignment when you are at work.
 
 Basic business rules/requirements:
+
 1. Everyone can add/remove/update restaurants
 
 2. Every user gets X (hardcoded, but "configurable") votes per
@@ -58,6 +59,7 @@ Select what best suits you. Since we use Python with Django, it is
 preferred. However, feel free to choose other languages/frameworks.
 
 **Bonus points (not mandatory):**
+
 - Wrapping the app in Docker
 - Deploying the API somewhere (for example, Heroku)
 
