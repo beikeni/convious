@@ -42,5 +42,4 @@ class ResultAPIView(APIView):
 
         response = ResultResponseSerializer([{'date': vote.date, 'winner': vote.get_winner()} for vote in
                                              Vote.objects.filter(date__gte=start_date, date__lte=end_date)], many=True)
-        print(response.data)
         return Response(response.data, status=status.HTTP_200_OK)

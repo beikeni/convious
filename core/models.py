@@ -1,5 +1,4 @@
-from dataclasses import dataclass
-from typing import List, Set, Dict
+from typing import Set, Dict
 
 from django.contrib.auth import get_user_model
 from django.db import models
@@ -25,6 +24,10 @@ class Vote(models.Model):
 
     @staticmethod
     def calculate_score(single_user_vote_count: int) -> float:
+        """
+        :param single_user_vote_count: Int
+        :return: Weighted value of votes
+        """
         if single_user_vote_count == 1:
             return 1
         if single_user_vote_count == 2:
@@ -33,15 +36,29 @@ class Vote(models.Model):
             return 1.5 + ((single_user_vote_count - 2) * 0.25)
 
     def get_restaurants(self) -> Set:
+        """
+        :return: Set containing restaurants that appear in a given voting session
+        """
         return set([individual_vote.restaurant for individual_vote in self.individual_votes.all()])
 
     def get_users(self) -> Set:
+        """
+        :return: Set containing distinct users who in a given voting session
+        """
         return set([individual_vote.user for individual_vote in self.individual_votes.all()])
 
     def get_restaurant_users(self, restaurant: Restaurant) -> Set:
+        """
+        :param restaurant: Restaurant
+        :return: Set containing distinct users who voted for a given restaurant in a given voting session
+        """
         return set([individual_vote.user for individual_vote in self.individual_votes.filter(restaurant=restaurant)])
 
     def process_vote(self) -> None:
+        """
+        Stores results in JSON Field `result`
+        :return: None
+        """
         result = []
 
         for index, restaurant in enumerate(self.get_restaurants()):
@@ -60,6 +77,9 @@ class Vote(models.Model):
         self.save()
 
     def get_winner(self) -> Dict:
+        """
+        :return: Dict object containing winning restaurant for a given vote
+        """
         max_score = max(self.result, key=lambda item: item['score'])
         winners = [restaurant for restaurant in self.result if restaurant['score'] == max_score['score']]
         tie = True if len(winners) > 1 else False
@@ -76,13 +96,23 @@ class IndividualVote(models.Model):
 
     @classmethod
     def get_vote_count(cls, user: get_user_model(), date: datetime.date) -> int:
+        """
+        :param user: User
+        :param date: Datetime.date
+        :return: Vote count per user per given date
+        """
         return cls.objects.filter(user=user, vote__date=date).count()
 
     @classmethod
     def register(cls, user: get_user_model(), restaurant: Restaurant, date: datetime.date) -> None:
+        """
+        :param user: User
+        :param restaurant: Restaurant
+        :param date: Datetime.date
+        :return: None if vote registered correctly or raises DailyVoteCountExceededError if user daily vote count exceeded
+        """
         if cls.get_vote_count(user=user, date=date) < DAILY_VOTE_LIMIT:
             vote, _ = Vote.objects.get_or_create(date=date)
             cls.objects.create(user=user, vote=vote, restaurant=restaurant)
         else:
             raise DailyVoteCountExceededError
-
