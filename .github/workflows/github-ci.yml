@@ -34,5 +34,5 @@ jobs:
       - name: Trigger Redeploy
         uses: wei/curl@master
         with:
-          args: http://convious.spookykiwi.com:9000/hooks/convious
+          args: https://convious.spookykiwi.com:9000/hooks/convious
 
