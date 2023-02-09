@@ -37,6 +37,7 @@ class Command(BaseCommand):
                 }
             )
             get_user_model().objects.update_or_create(
+                username=f"username{index}",
                 defaults={
                     "username": f"username{index}"
                 }
