@@ -29,9 +29,9 @@ Brief
    on top of it. Approach this task as you would approach a real
    assignment when you are at work.
 
-   Basic business rules/requirements:
+   **Basic business rules/requirements:**
 
-  1. Everyone can add/remove/update restaurants
+   1. Everyone can add/remove/update restaurants
 
    2. Every user gets X (hardcoded, but "configurable") votes per
    day. Each vote has a "weight". First user vote on the same
@@ -51,7 +51,7 @@ Brief
    5. Do not forget that frontend dev will need a way to show which
    restaurants users can vote on and which restaurant is a winner
 
-  6. Readme on how to use the API, launch the project, etc.
+   6. Readme on how to use the API, launch the project, etc.
 
    **Technologies:**
 
