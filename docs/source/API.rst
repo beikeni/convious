@@ -12,7 +12,7 @@ List
 
 	GET /api/v1/restaurants/
 
-Response
+Response 200
 
 .. code-block::
 
@@ -34,7 +34,7 @@ Create
 
 :name: String
 
-Response
+Response 201
 
 .. code-block::
 
@@ -54,7 +54,7 @@ Update
 
 :name: String
 
-Response
+Response 200
 
 .. code-block::
 
@@ -89,13 +89,13 @@ Votes made through this endpoint are automatically assigned the current datetime
 :user: Int
 :restaurant: Int
 
-Response 200
+Response 201
 
 .. code-block::
 
 	{'Success': 'Vote successfully registered'}
 
-Response 403 - User daily vote count exceeded
+Response 403
 
 .. code-block::
 
@@ -116,6 +116,8 @@ To return a list of past results indicate the start date and the length of the d
 
 :date: String
 :period_length: Int
+
+Response 200
 
 .. code-block::
 

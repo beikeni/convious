@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.core.management import BaseCommand
 import random
 
-from django.db import IntegrityError
 import datetime
 
 from core.models import Restaurant, IndividualVote, DAILY_VOTE_LIMIT, Vote
@@ -32,7 +31,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for index in range(1, 11):
             Restaurant.objects.update_or_create(
-                id=index,
                 defaults={
                     "name": f"Restaurant {index}"
                 }

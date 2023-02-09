@@ -24,24 +24,28 @@ class TestVoting(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.today = datetime.date.today()
+        self.users = [user.id for user in get_user_model().objects.all()]
+        self.restaurants = [restaurant.id for restaurant in Restaurant.objects.all()]
 
     def test_individual_vote_success(self):
         response = self.client.post(reverse('core:vote'), {
-            'user': 3,
-            'restaurant': 2
+            'user': random.choice(self.users),
+            'restaurant': random.choice(self.restaurants)
         })
         self.assertEqual(response.status_code, 201)
 
     def test_individual_vote_exceed_daily_limit(self):
+        user_id = random.choice(self.users)
+        restaurant_id = random.choice(self.restaurants)
         for _ in range(DAILY_VOTE_LIMIT):
             self.client.post(reverse('core:vote'), {
-                'user': 5,
-                'restaurant': random.randint(1, 10)
+                'user': user_id,
+                'restaurant': restaurant_id
             })
 
         response = self.client.post(reverse('core:vote'), {
-            'user': 5,
-            'restaurant': 4
+            'user': user_id,
+            'restaurant': restaurant_id
         })
 
         self.assertEqual(response.status_code, 403)
