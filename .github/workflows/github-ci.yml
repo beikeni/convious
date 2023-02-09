@@ -51,7 +51,7 @@ jobs:
         run: |
           python manage.py test
 
-  docker:
+  build:
     runs-on: ubuntu-latest
     needs: test
     container: docker
@@ -72,7 +72,7 @@ jobs:
           push: true
           tags: dockerbeikeni/convious:latest
 
-  redeploy:
+  deploy:
     needs: docker
     runs-on: ubuntu-latest
     steps:

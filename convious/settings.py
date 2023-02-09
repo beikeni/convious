@@ -100,7 +100,7 @@ else:
             "NAME": os.environ.get("POSTGRES_USER"),
             "USER": os.environ.get("POSTGRES_USER"),
             "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-            "HOST": "convious_db",
+            "HOST": os.environ.get("POSTGRES_HOST"),
             "PORT": 5432,
         }
     }
