@@ -116,7 +116,7 @@ To return a list of past results indicate the start date and the length of the d
 -----------------------------------
 
 Get Today's Winner
-------------------
+""""""""""""""""
 
 .. code-block::
 
@@ -142,7 +142,7 @@ Response 200
 -----------------------------------
 
 Get Specific Date's Winner
-------------------
+""""""""""""""""""""""""
 
 .. code-block::
 
@@ -168,7 +168,7 @@ Response 200
 -----------------------------------
 
 Get Period Winners
-------------------
+""""""""""""""""""""""""
 
 .. code-block::
 
