@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Convious'
-copyright = '2023, Alessandro Baccini'
-author = 'Alessandro Baccini'
+copyright = '2023, candidate'
+author = 'author'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

@@ -1,7 +1,7 @@
 .. convious documentation master file, created by
    sphinx-quickstart on Thu Feb 9 15:07:30 2023.
 
-Welcome to Alessandro Baccini's Convious Test Task documentation!
+Welcome to my Convious Test Task documentation!
 =================================
 
 Contents
