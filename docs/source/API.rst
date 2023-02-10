@@ -118,14 +118,42 @@ To return a list of past results indicate the start date and the length of the d
 	GET /api/v1/result/
 
 
-Returns today's winner
+Response 200
+
+.. code-block::
+
+	[
+		{
+			"date": "2023-02-09",
+			"winner": {
+				"score": 7.75,
+				"restaurant_id": 8,
+				"distinct_users": 6,
+				"restaurant_name": "Restaurant 8"
+			}
+		}
+	]
 
 .. code-block::
 
 	GET /api/v1/result/?date=2023-01-27
 
 
-Returns winner on selected date
+Response 200
+
+.. code-block::
+
+	[
+		{
+			"date": "2023-01-27",
+			"winner": {
+				"score": 7.75,
+				"restaurant_id": 8,
+				"distinct_users": 6,
+				"restaurant_name": "Restaurant 8"
+			}
+		}
+	]
 
 .. code-block::
 
