@@ -113,6 +113,11 @@ To return a list of past results indicate the start date and the length of the d
 :date: String
 :period_length: Int
 
+-----------------------------------
+
+Get Today's Winner
+------------------
+
 .. code-block::
 
 	GET /api/v1/result/
@@ -134,6 +139,11 @@ Response 200
 		}
 	]
 
+-----------------------------------
+
+Get Specific Date's Winner
+------------------
+
 .. code-block::
 
 	GET /api/v1/result/?date=2023-01-27
@@ -154,6 +164,11 @@ Response 200
 			}
 		}
 	]
+
+-----------------------------------
+
+Get Period Winners
+------------------
 
 .. code-block::
 
