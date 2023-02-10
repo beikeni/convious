@@ -110,12 +110,27 @@ If no date is indicated the date of today is assumed.
 If no period length is indicated it defaults to 0.
 To return a list of past results indicate the start date and the length of the desired period.
 
+:date: String
+:period_length: Int
+
+.. code-block::
+
+	GET /api/v1/result/
+
+
+Returns today's winner
+
+.. code-block::
+
+	GET /api/v1/result/?date=2023-01-27
+
+
+Returns winner on selected date
+
 .. code-block::
 
 	GET /api/v1/result/?date=2023-01-01&period_length=3
 
-:date: String
-:period_length: Int
 
 Response 200
 
