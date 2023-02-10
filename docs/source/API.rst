@@ -113,7 +113,6 @@ To return a list of past results indicate the start date and the length of the d
 :date: String
 :period_length: Int
 
------------------------------------
 
 Get Today's Winner
 """"""""""""""""
